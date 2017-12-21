@@ -34,6 +34,18 @@ class LoginForm extends Component {
     });
   }
 
+  renderButton() {
+    if(this.state.loading) {
+      return <Spinner size="small" />
+    }
+
+    return (
+      <Button onPress={this.onButtonPress.bind(this)}>
+        Log In
+      </Button>
+    );
+  }
+
   render() {
     return(
       <Card>
@@ -69,9 +81,9 @@ class LoginForm extends Component {
         </Text>
 
         <CardSection>
-          <Button onPress={this.onButtonPress.bind(this)}>
-            Log In
-          </Button>
+          {/* Here we trigger the helper method thet we defined with a condition: */}
+          {/* if we load don't show the button, show the spinner and vice versa */}
+          {this.renderButton()}
         </CardSection>
       </Card>
     );
