@@ -4,10 +4,14 @@ import { TextInput, View, Text } from 'react-native';
 // here we are receiving value and onChangeText props from LoginForm component
 // and we are passing it down to <TextInput>
 const Input = ({ label, value, onChangeText}) => {
+  const{ inputStyle, labelStyle, containerStyle } = styles;
+
+
   return(
-    <View>
-      <Text>{label}</Text>
+    <View style={containerStyle}>
+      <Text style={labelStyle}>{label}</Text>
       <TextInput
+        style={inputStyle}
         value={value}
         onChangeText={onChangeText}
         style={{height: 20, width: 100}}
@@ -34,7 +38,7 @@ const styles = {
     height: 40,
     flex: 1,
     flexDirection: 'row',
-    align: 'center'
+    alignItems: 'center'
   }
 };
 

@@ -12,6 +12,7 @@ class LoginForm extends Component {
       <Card>
         <CardSection>
           <Input
+            label = "Email"
             value={this.state.text}
             onChangeText = { text => this.setState({ text: text }) }
             // style={{ height: 20, width: 100 }} => since we defined style in the Input component already, we don't need it here
