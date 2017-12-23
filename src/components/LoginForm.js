@@ -24,7 +24,8 @@ class LoginForm extends Component {
     firebase.auth().signInWithEmailAndPassword(email, password)
     // when we execute this upper line of code, it returns the promise
     // with the promise in JS we handle asynchronous code
-    // if the login fails, we will try to make an account for user:
+    // if the login fails, we will try to make an account for user (.catch part)
+    .then()
     .catch(() => {
       firebase.auth().createUserWithEmailAndPassword(email, password)
       // if this fails (since it is still asynchronous function), we will chain
@@ -32,6 +33,12 @@ class LoginForm extends Component {
           this.setState({ error: 'Authentication faild.' });
         });
     });
+  }
+
+  onLoginSuccess() {
+    // 1. clear error messages
+    // 2. clear "loading"  part, we have successfully logged in so we don't need it any more
+    // 3. clean out the form (reset the state)
   }
 
   renderButton() {
