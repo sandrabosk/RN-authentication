@@ -25,20 +25,33 @@ class LoginForm extends Component {
     // when we execute this upper line of code, it returns the promise
     // with the promise in JS we handle asynchronous code
     // if the login fails, we will try to make an account for user (.catch part)
-    .then()
+    .then(this.onLoginSuccess.bind(this))
+    // since this onLoginSuccess is a function that we are passing to a promise that
+    // will be envoked at some point in future we don't know the context so we have to use this .bind(this)
     .catch(() => {
       firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(this.onLoginSuccess.bind(this))
       // if this fails (since it is still asynchronous function), we will chain
-        .catch(() => {
-          this.setState({ error: 'Authentication faild.' });
-        });
+        // .catch(() => {
+        //   this.setState({ error: 'Authentication faild.' });
+        // });
+        .catch(this.onLoginFail.bind(this))
     });
   }
+onLoginFail() {
+  this.setState({ error: 'Authentication faild.', loading: false })
 
+}
   onLoginSuccess() {
     // 1. clear error messages
     // 2. clear "loading"  part, we have successfully logged in so we don't need it any more
     // 3. clean out the form (reset the state)
+    this.setState({
+      email: '',
+      password: '',
+      loading: false,
+      error: ''
+    });
   }
 
   renderButton() {
