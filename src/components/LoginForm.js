@@ -39,8 +39,7 @@ class LoginForm extends Component {
     });
   }
 onLoginFail() {
-  this.setState({ error: 'Authentication faild.', loading: false })
-
+  this.setState({ error: 'Authentication faild.', loading: false });
 }
   onLoginSuccess() {
     // 1. clear error messages
