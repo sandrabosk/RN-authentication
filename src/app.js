@@ -46,7 +46,7 @@ class App extends Component {
           return <Spinner size="large" />
       }
   }
-
+//ovo je neki komentar
   render() {
     return (
       <View>
