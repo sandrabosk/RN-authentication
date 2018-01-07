@@ -18,7 +18,7 @@ class App extends Component {
       storageBucket: 'rn-auth-8c459.appspot.com',
       messagingSenderId: '573448177503'
     });
-    // onAuthStateChanged is an event handler which shows us when the state of user has onAuthStateChanged
+    // onAuthStateChanged is an event handler that accepts the function and shows us when the state of user has onAuthStateChanged
     // if the user is logged in or logged out
     firebase.auth().onAuthStateChanged((user) => {
       // when user signs in this argument user will represent whole user object
@@ -28,7 +28,6 @@ class App extends Component {
       } else {
           this.setState({ loggedIn: false });
       }
-
     });
   }
   renderContent () {
