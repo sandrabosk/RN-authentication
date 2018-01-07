@@ -31,19 +31,27 @@ class App extends Component {
     });
   }
   renderContent () {
-      switch (this.state.loggedIn) {
-        case true:
-          return (
-            <Button onPress={() => firebase.auth().signOut()}>
-              Log out
-            </Button>
-          );
-        case false:
-          return <LoginForm />
-
-        default:
-          return <Spinner size="large" />
-      }
+    if (this.state.loggedIn) {
+      return (
+        <Button>
+          Log Out
+        </Button>
+      );
+    }
+    return <LoginForm />;
+      // switch (this.state.loggedIn) {
+      //   case true:
+      //     return (
+      //       <Button onPress={() => firebase.auth().signOut()}>
+      //         Log out
+      //       </Button>
+      //     );
+      //   case false:
+      //     return <LoginForm />
+      //
+      //   default:
+      //     return <Spinner size="large" />
+      // }
   }
 //ovo je neki komentar
   render() {
