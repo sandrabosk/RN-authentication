@@ -7,7 +7,8 @@ import LoginForm from './components/LoginForm';
 
 class App extends Component {
   // we are introducing new state here that will just track the changes of the state of the user
-  state = { loggedIn: false };
+  // state = { loggedIn: false }; => we used this as our begginer behaviuor but actually we need something that will say: wait a minnute until I check if you're logged in
+  state = { loggedIn: null };
 
   componentWillMount() {
     firebase.initializeApp({
@@ -30,30 +31,23 @@ class App extends Component {
       }
     });
   }
+
+  // the following shows how to handle three different states of our application:
   renderContent () {
-    if (this.state.loggedIn) {
-      return (
-        <Button>
-          Log Out
-        </Button>
-      );
+    switch (this.state.loggedIn) {
+      case true:
+        return <Button>Log Out</Button>;
+      case false:
+        return <LoginForm />;
+      default:
+        return (
+          <View style={styles.spinnerStyle}>
+            <Spinner size="large" />
+          </View>
+        )
     }
-    return <LoginForm />;
-      // switch (this.state.loggedIn) {
-      //   case true:
-      //     return (
-      //       <Button onPress={() => firebase.auth().signOut()}>
-      //         Log out
-      //       </Button>
-      //     );
-      //   case false:
-      //     return <LoginForm />
-      //
-      //   default:
-      //     return <Spinner size="large" />
-      // }
   }
-//ovo je neki komentar
+
   render() {
     return (
       <View>
@@ -62,6 +56,14 @@ class App extends Component {
         {this.renderContent()}
       </View>
     );
+  }
+}
+
+const styles={
+  spinnerStyle: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 }
 
