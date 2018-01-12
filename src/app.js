@@ -58,13 +58,13 @@ class App extends Component {
     );
   }
 }
-
-const styles={
-  spinnerStyle: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-}
+//playing with styles:
+// const styles={
+//   spinnerStyle: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center'
+//   }
+// }
 
 export default App;
