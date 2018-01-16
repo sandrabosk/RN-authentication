@@ -32,6 +32,8 @@ class App extends Component {
     });
   }
 
+  //this is a comment
+
   // the following shows how to handle three different states of our application:
   renderContent () {
     switch (this.state.loggedIn) {
