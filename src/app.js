@@ -15,7 +15,7 @@ class App extends Component {
       apiKey: 'AIzaSyBl5n6NbQT8hFxqnpEX0Gefcoc_al8T-Os',
       authDomain: 'rn-auth-8c459.firebaseapp.com',
       databaseURL: 'https://rn-auth-8c459.firebaseio.com',
-      projectId: 'rn-auth-8c459',
+      // projectId: 'rn-auth-8c459',
       storageBucket: 'rn-auth-8c459.appspot.com',
       messagingSenderId: '573448177503'
     });
@@ -38,18 +38,15 @@ class App extends Component {
   renderContent () {
     switch (this.state.loggedIn) {
       case true:
-        return
+        return (
         <Button onPress={() => firebase.auth().signOut()}>
           Log Out
-        </Button>;
+        </Button>
+      );
       case false:
         return <LoginForm />;
       default:
-        return (
-          // <View style={styles.spinnerStyle}>
-            <Spinner size="large" />
-          // </View>
-        )
+        return <Spinner size="large" />
     }
   }
 
@@ -63,13 +60,5 @@ class App extends Component {
     );
   }
 }
-//playing with styles:
-// const styles={
-//   spinnerStyle: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center'
-//   }
-// }
 
 export default App;
